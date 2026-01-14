@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="ConsoleConsumer/ConsoleConsumer.csproj" Id="d921493d-a18b-479f-9d56-d0405dbad119" />
+  <Project Path="ConsoleProducer/ConsoleProducer.csproj" />
+</Solution>
