@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="LogConsumer/LogConsumer.csproj" Id="62f4d73c-a095-48dd-88a8-e3bb262e33ef" />
+  <Project Path="LogProducer/LogProducer.csproj" />
+</Solution>

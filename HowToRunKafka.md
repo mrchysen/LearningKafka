@@ -9,6 +9,6 @@ Then in new line put some string input to produce messages to topic.
 
 # How to run kafka localy with docker-compose
 
-`docker-compose -f ./kafka-compose.yaml` up
+`docker-compose -f ./kafka-compose.yaml up`
 
 Now you can send messages to localhost:9092. And use web application kafka-ui on localhost:8080
