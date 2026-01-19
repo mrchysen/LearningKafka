@@ -5,3 +5,8 @@ At first you need to run kafka see [guide](./HowToRunKafka.md)
 ## Tasks
 
 [Task1 - "Hello, Kafka!" — Basic Interaction](./Task1/README.md)
+
+[Task 2 - "Microservices Logging" — Practical Scenario](./Task2/README.md)
+- Rebalancing
+- Consumer Group
+- Partitions
