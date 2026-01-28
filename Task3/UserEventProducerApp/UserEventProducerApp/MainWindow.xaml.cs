@@ -21,6 +21,8 @@ public partial class MainWindow : Window
         _topic = topic;
 
         InitializeComponent();
+
+        UserIdTextBlock.Text = userId;
     }
 
     private async void ScrollViewer_ScrollChanged(object sender, System.Windows.Controls.ScrollChangedEventArgs e)

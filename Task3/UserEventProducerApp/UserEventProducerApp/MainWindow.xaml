@@ -27,6 +27,19 @@
             FontSize="32"
             FontWeight="Bold">Menu</TextBlock>
 
+        <TextBlock
+            Grid.Row="0"
+            Grid.Column="1"
+            
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            FontSize="32"
+            FontWeight="Bold"
+            
+            x:Name="UserIdTextBlock">
+            
+        </TextBlock>
+        
         <StackPanel
             Grid.Row="1">
 
