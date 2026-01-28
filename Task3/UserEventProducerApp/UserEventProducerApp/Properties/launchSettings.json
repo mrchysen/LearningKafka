@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "UserEventProducerApp": {
+      "commandName": "Project",
+      "commandLineArgs": "100"
+    }
+  }
+}

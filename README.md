@@ -10,3 +10,8 @@ At first you need to run kafka see [guide](./HowToRunKafka.md)
 - Rebalancing
 - Consumer Group
 - Partitions
+
+[Task 3 - "User Event Tracker" - Working with Keys and Serialization](./Task3/README.md)
+- Message Keys
+- Partitioning Strategy
+- JSON Serialization/Deserialization
