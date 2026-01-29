@@ -1,10 +1,14 @@
 # Practice on using Kafka with C# .NET
 
-At first you need to run kafka see [guide](./HowToRunKafka.md)
+This repository is practises to undestand kafka in .NET world using C#. 
+At first you need to run kafka. See [guide](./HowToRunKafka.md).
 
 ## Tasks
 
 [Task1 - "Hello, Kafka!" — Basic Interaction](./Task1/README.md)
+- Topic
+- Consumer
+- Producer
 
 [Task 2 - "Microservices Logging" — Practical Scenario](./Task2/README.md)
 - Rebalancing
@@ -15,3 +19,7 @@ At first you need to run kafka see [guide](./HowToRunKafka.md)
 - Message Keys
 - Partitioning Strategy
 - JSON Serialization/Deserialization
+
+[Task 4 - "Order Processing Microservices" - ASP NET Core kafka integration](./Task4/README.md)
+- Kafka in ASP NET Core web app
+- Microservices architecture
