@@ -1,6 +1,6 @@
 # Practice on using Kafka with C# .NET
 
-This repository is practises to undestand kafka in .NET world using C#. 
+This repository is practises to understand kafka in .NET world using C#. 
 At first you need to run kafka. See [guide](./HowToRunKafka.md).
 
 ## Tasks
