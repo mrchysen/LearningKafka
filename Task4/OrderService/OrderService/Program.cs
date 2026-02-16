@@ -1,5 +1,7 @@
+using Microsoft.EntityFrameworkCore;
 using OrderService;
 using OrderService.Application.Orders.CreateOrder;
+using OrderService.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +14,10 @@ builder.Services.AddSwaggerGen();
 
 // Application Services
 builder.Services.AddScoped<ICreationOrderService, CreationOrderService>();
+
+// Infrastructure Services
+builder.Services.AddDbContext<OrderServiceDbContext>(options =>
+    options.UseInMemoryDatabase("order_service_database"));
 
 var app = builder.Build();
 
