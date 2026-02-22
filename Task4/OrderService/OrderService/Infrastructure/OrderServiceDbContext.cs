@@ -18,7 +18,9 @@ public class OrderServiceDbContext(DbContextOptions<OrderServiceDbContext> optio
         );
     }
 
-    public DbSet<Order> Orders { get; set; }
+    public DbSet<Order> Orders => Set<Order>();
 
-    public DbSet<OrderItem> OrderItems { get; set; }
+    public DbSet<OrderItem> OrderItems => Set<OrderItem>();
+
+    public DbSet<Product> Products => Set<Product>();
 }

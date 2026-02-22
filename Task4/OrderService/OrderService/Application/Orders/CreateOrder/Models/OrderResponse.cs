@@ -2,9 +2,11 @@
 
 public class OrderResponse
 {
+    public Guid OrderId { get; set; }
+
     public decimal AllPrice { get; set; }
 
-    public required string PersontId { get; set; }
+    public required Guid PersontId { get; set; }
 
     public List<OrderItemDto> OrderItems { get; set; } = [];
 
@@ -15,5 +17,6 @@ public enum OrderStatus
 {
     Paid,
     Pending,
-    Failed
+    Failed,
+    Canceled
 }

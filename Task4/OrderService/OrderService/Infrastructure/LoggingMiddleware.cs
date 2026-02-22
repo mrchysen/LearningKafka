@@ -1,4 +1,4 @@
-﻿namespace OrderService;
+﻿namespace OrderService.Infrastructure;
 
 public class LoggingMiddleware(
     RequestDelegate next,

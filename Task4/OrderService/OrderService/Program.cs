@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using OrderService;
 using OrderService.Application.Orders.CreateOrder;
+using OrderService.Application.Orders.GetActualOrdersByPersonId;
+using OrderService.Application.Orders.GetOrdersByPersonId;
 using OrderService.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +15,8 @@ builder.Services.AddSwaggerGen();
 
 // Application Services
 builder.Services.AddScoped<ICreationOrderService, CreationOrderService>();
+builder.Services.AddScoped<IGetOrdersByPersonIdService, GetOrdersByPersonIdService>();
+builder.Services.AddScoped<IGetActualOrdersByPersonIdService, GetActualOrdersByPersonIdService>();
 
 // Infrastructure Services
 builder.Services.AddDbContext<OrderServiceDbContext>(options =>
