@@ -1,8 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Confluent.Kafka;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using OrderService.Application.Orders.CreateOrder.Mappers;
 using OrderService.Application.Orders.CreateOrder.Models;
 using OrderService.Domain;
 using OrderService.Infrastructure;
+using OrderService.Infrastructure.Settings;
 
 namespace OrderService.Application.Orders.CreateOrder;
 
@@ -13,13 +16,15 @@ public interface ICreationOrderService
 
 public class CreationOrderService(
     OrderServiceDbContext dbContext,
+    IProducer<string, Order> orderProducer,
+    IOptions<KafkaSettings> kafkaSettings,
     ILogger<CreationOrderService> logger) : ICreationOrderService
 {
     public async Task<OrderResponse> Create(CreateOrderParams orderParams, CancellationToken cancellationToken)
     {
         logger.LogInformation("Order created for person {personId}", orderParams.PersonId);
 
-        var products = 
+        var products =
             await dbContext.Products
             .Where(x => orderParams.OrderItems.Select(oi => oi.Name).Contains(x.Name))
             .ToDictionaryAsync(x => x.Name, cancellationToken);
@@ -28,17 +33,27 @@ public class CreationOrderService(
 
         var orderId = Guid.NewGuid();
 
-        dbContext.Add(new Order
-        { 
+        var order = new Order
+        {
             Id = orderId,
             PersonId = orderParams.PersonId,
             CreatedAt = DateTime.UtcNow,
             OrderItems = orderParams.OrderItems,
-            TotalPrice = GetTotalPrice(products, orderParams.OrderItems)
-        });
+            TotalPrice = GetTotalPrice(products, orderParams.OrderItems),
+            Status = OrderStatus.Pending
+        };
+
+        dbContext.Add(order);
 
         // TODO: use outbox
-        // Kafka
+        await orderProducer.ProduceAsync(
+            kafkaSettings.Value.OrderTopic,
+            new()
+            {
+                Key = orderId.ToString(),
+                Value = order
+            },
+            cancellationToken);
 
         DecreaseQuantity(products, orderParams.OrderItems);
 
@@ -98,7 +113,7 @@ public class CreationOrderService(
                 problems.Add($"{orderItem.Name} (available: {product.Quantity}, requested: {orderItem.Quantity})");
         }
 
-        if(problems.Count > 0)
+        if (problems.Count > 0)
             throw new Exception($"Insufficient quantity: {string.Join("; ", problems)}");
     }
 }
