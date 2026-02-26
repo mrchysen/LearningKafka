@@ -1,6 +1,4 @@
-﻿using OrderService.Application.Orders.CreateOrder.Models;
-
-namespace OrderService.Domain;
+﻿namespace OrderService.Domain;
 
 public class Order
 {

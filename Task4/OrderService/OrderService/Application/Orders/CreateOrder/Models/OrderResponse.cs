@@ -1,4 +1,6 @@
-﻿namespace OrderService.Application.Orders.CreateOrder.Models;
+﻿using OrderService.Domain;
+
+namespace OrderService.Application.Orders.CreateOrder.Models;
 
 public class OrderResponse
 {
@@ -11,12 +13,4 @@ public class OrderResponse
     public List<OrderItemDto> OrderItems { get; set; } = [];
 
     public OrderStatus Status { get; set; }
-}
-
-public enum OrderStatus
-{
-    Paid,
-    Pending,
-    Failed,
-    Canceled
 }

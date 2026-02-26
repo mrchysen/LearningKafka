@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using OrderService.Application.Orders.CreateOrder.Models;
 using OrderService.Application.Orders.GetActualOrdersByPersonId.Models;
 using OrderService.Application.Orders.GetOrdersByPersonId.Models;
+using OrderService.Domain;
 using OrderService.Infrastructure;
 
 namespace OrderService.Application.Orders.GetActualOrdersByPersonId;
